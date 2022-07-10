@@ -14,6 +14,7 @@ import lyricsgenius
 
 TOKEN = os.environ['TOKEN'] # NEED YOUR DISCORD TOKEN
 GENIUS_TOKEN = os.environ['GENIUS_TOKEN'] # NEED YOUR GENIUS TOKEN
+FFMPEG_PATH = r'' # path to your ffmpeg.exe (for example - C:\Program Files\FFMPEG\bin\ffmpeg.exe)
 genius = lyricsgenius.Genius(GENIUS_TOKEN)
 bot = commands.Bot(command_prefix='.', intents=discord.Intents.all())
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
@@ -360,8 +361,7 @@ async def play(ctx, *, url):
 
     song = pafy.new(url)  # creates a new pafy object
     audio = song.getbestaudio()  # gets an audio source
-    path = '' # path to your ffmpeg.exe (for example - C:\Program Files\FFMPEG\bin\ffmpeg.exe)
-    source = FFmpegPCMAudio(executable=path, source=audio.url, **FFMPEG_OPTIONS)   # converts the youtube audio source into a source discord can use
+    source = FFmpegPCMAudio(executable=FFMPEG_PATH, source=audio.url, **FFMPEG_OPTIONS)   # converts the youtube audio source into a source discord can use
     voice_client.play(source)  # play the source
 
 
