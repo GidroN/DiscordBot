@@ -360,7 +360,8 @@ async def play(ctx, *, url):
 
     song = pafy.new(url)  # creates a new pafy object
     audio = song.getbestaudio()  # gets an audio source
-    source = FFmpegPCMAudio(executable=r'C:\Program Files\FFMPEG\bin\ffmpeg.exe', source=audio.url, **FFMPEG_OPTIONS)   # converts the youtube audio source into a source discord can use
+    path = '' # path to your ffmpeg.exe (for example - C:\Program Files\FFMPEG\bin\ffmpeg.exe)
+    source = FFmpegPCMAudio(executable=path, source=audio.url, **FFMPEG_OPTIONS)   # converts the youtube audio source into a source discord can use
     voice_client.play(source)  # play the source
 
 
