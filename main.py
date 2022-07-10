@@ -12,8 +12,8 @@ import random
 import pafy
 import lyricsgenius
 
-TOKEN = os.environ['TOKEN']
-GENIUS_TOKEN = os.environ['GENIUS_TOKEN']
+TOKEN = os.environ['TOKEN'] # NEED YOUR DISCORD TOKEN
+GENIUS_TOKEN = os.environ['GENIUS_TOKEN'] # NEED YOUR GENIUS TOKEN
 genius = lyricsgenius.Genius(GENIUS_TOKEN)
 bot = commands.Bot(command_prefix='.', intents=discord.Intents.all())
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
