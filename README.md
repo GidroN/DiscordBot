@@ -1,4 +1,4 @@
-# Discord Bot
+# Welcome!
 
 ### A Discord Bot with simple moderation, which can also play music.
 
