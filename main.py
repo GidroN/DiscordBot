@@ -98,16 +98,14 @@ async def unban(ctx, member: discord.Member, reason=None):
 
 
 @bot.command()
-@commands.is_owner()
 async def count_members(ctx):
     """
     :description: Nothing interesting.
-    :param ctx: None
     :return: integer. Count of the member.
     """
     members = ctx.message.guild.members
-    for member in members:
-        await ctx.send(f"Member found: {member.mention}")
+#     for member in members:
+#         await ctx.send(f"Member found: {member.mention}")
     await ctx.reply(len(members))
 
 
