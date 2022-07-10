@@ -27,7 +27,7 @@ async def on_ready():
 
 @bot.event
 async def on_member_join(member: discord.Member):
-    role = get(member.guild.roles, id=988491899553845269)
+    role = get(member.guild.roles, id=role_id) #give each new member a role.
     await member.add_roles(role)
 
 
