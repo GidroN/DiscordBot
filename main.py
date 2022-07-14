@@ -15,7 +15,10 @@ import lyricsgenius
 TOKEN = os.environ['TOKEN'] # NEED YOUR DISCORD TOKEN
 GENIUS_TOKEN = os.environ['GENIUS_TOKEN'] # NEED YOUR GENIUS TOKEN
 FFMPEG_PATH = r'' # path to your ffmpeg.exe (for example - C:\Program Files\FFMPEG\bin\ffmpeg.exe)
-genius = lyricsgenius.Genius(GENIUS_TOKEN)
+if not TOKEN:
+    print('No discord token provided.')
+    quit()
+
 bot = commands.Bot(command_prefix='.', intents=discord.Intents.all())
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
 
@@ -238,6 +241,11 @@ async def lyrics(ctx, *, args):
     :example: '21 pilots stressed out'
     :return: lyrics
     """
+    if not GENIUS_TOKEN:
+        print("No Genius token provided.")
+        return
+    
+    genius = lyricsgenius.Genius(GENIUS_TOKEN)
     song = genius.search_song(title=args)
     if song is None:
         await ctx.reply("No songs found.")
