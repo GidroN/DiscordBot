@@ -51,7 +51,7 @@ async def on_command_error(ctx, error):
 
 
 @bot.command()
-@commands.is_owner()
+@commands.has_permissions(administrator=True)
 async def kick(ctx, member: discord.Member, reason=None):
     """
     :description: You can kick somebody.
