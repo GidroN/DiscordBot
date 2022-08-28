@@ -13,7 +13,6 @@ import random
 import pafy
 import lyricsgenius
 
-
 if not TOKEN:
     print('No discord token provided.')
     quit()
